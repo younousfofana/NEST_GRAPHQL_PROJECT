@@ -5,6 +5,9 @@ import { ConfigModule } from '@nestjs/config';
 import dbconfig from './config/dbconfig';
 import dbconfigproduction from './config/dbconfigproduction';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { ArticlesModule } from './articles/articles.module';
 
 @Module({
   imports: [
@@ -17,7 +20,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
     TypeOrmModule.forRootAsync({
       useFactory: process.env.NODE_ENV == "production" ? dbconfigproduction : dbconfig 
-    })
+    }),
+
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: true,
+      debug: true,
+      playground: true
+    }),
+
+    ArticlesModule
   ],
   
   controllers: [AppController],
