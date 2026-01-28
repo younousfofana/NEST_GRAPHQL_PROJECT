@@ -1,3 +1,4 @@
+import path from "path";
 import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions.js"
 
 export default() : PostgresConnectionOptions =>({
@@ -8,7 +9,7 @@ export default() : PostgresConnectionOptions =>({
     password: process.env.DB_PASSWORD,
     database:process.env.DB_DATABASE,
     entities: [
-    
+        path.join(__dirname, '..', '**', '*.entity.{ts,js}')
     ],
-    synchronize: false
+    synchronize: true
 });

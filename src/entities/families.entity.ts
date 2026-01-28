@@ -1,8 +1,8 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ArticlesEntity } from "./articles";
+import { Articles } from "./articles.entity";
 
 @Entity()
-export class FamiliesEntity{
+export class Families{
 
     @PrimaryGeneratedColumn()
     id : number
@@ -14,8 +14,8 @@ export class FamiliesEntity{
     libelle : string
 
     @OneToMany(
-        ()=>ArticlesEntity, 
+        ()=>Articles, 
         article => article.famille
     )
-    articles : ArticlesEntity[]
+    articles : Articles[]
 }

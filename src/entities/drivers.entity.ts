@@ -1,5 +1,5 @@
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
-import { SubFamiliesEntity } from "./sub_families";
+import { SubFamilies } from "./sub_families.entity";
 
 @Entity()
 export class drivers{
@@ -16,7 +16,7 @@ export class drivers{
     @Column()
     isSystem : boolean
 
-    @ManyToMany(()=>SubFamiliesEntity)
+    @ManyToMany(()=>SubFamilies)
     @JoinTable()
-    subFamilies : SubFamiliesEntity[]
+    subFamilies : SubFamilies[]
 }

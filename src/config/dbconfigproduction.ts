@@ -10,5 +10,5 @@ export default() : PostgresConnectionOptions =>({
     entities: [
         
     ],
-    synchronize: true
+    synchronize: false
 });

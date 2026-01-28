@@ -1,7 +1,7 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity()
-export class SubFamiliesEntity{
+export class SubFamilies{
 
     @PrimaryGeneratedColumn()
     id : number

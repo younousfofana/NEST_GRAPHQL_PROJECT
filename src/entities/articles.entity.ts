@@ -1,8 +1,8 @@
 import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { FamiliesEntity } from "./families";
+import { Families } from "./families.entity";
 
 @Entity()
-export class ArticlesEntity{
+export class Articles{
     
     @PrimaryGeneratedColumn()
     id : number
@@ -14,14 +14,14 @@ export class ArticlesEntity{
     groupe : string
 
     @OneToOne(
-        ()=>FamiliesEntity, 
+        ()=>Families, 
         (famille)=> famille.articles,
         {
             nullable: false,
             onDelete: 'RESTRICT'
         }
      )
-    famille : FamiliesEntity
+    famille : Families
 
     @Column()
     sFamille : string
