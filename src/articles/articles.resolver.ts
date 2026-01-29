@@ -1,11 +1,14 @@
 import { Query, Resolver } from '@nestjs/graphql';
 import { Articles } from 'src/entities/articles.entity';
+import { ArticlesService } from './articles.service';
 
 @Resolver(()=> Articles)
 export class ArticlesResolver {
 
-    @Query(() => Articles, {name:'articles'})
+    constructor(private articlesService : ArticlesService){}
+
+    @Query(() => [Articles], {name:'articles'})
     async findAll(){
-        return [] as Articles[];
+        return this.articlesService.findAll();
     }
 }
