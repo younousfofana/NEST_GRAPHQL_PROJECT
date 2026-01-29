@@ -4,7 +4,7 @@ import { Field, Int, ObjectType } from "@nestjs/graphql";
 
 @ObjectType()
 @Entity()
-export class drivers{
+export class Drivers{
     
     @Field(()=> Int)
     @PrimaryGeneratedColumn()
