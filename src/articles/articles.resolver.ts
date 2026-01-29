@@ -1,4 +1,11 @@
-import { Resolver } from '@nestjs/graphql';
+import { Query, Resolver } from '@nestjs/graphql';
+import { Articles } from 'src/entities/articles.entity';
 
-@Resolver()
-export class ArticlesResolver {}
+@Resolver(()=> Articles)
+export class ArticlesResolver {
+
+    @Query(() => Articles, {name:'articles'})
+    async findAll(){
+        return [] as Articles[];
+    }
+}
