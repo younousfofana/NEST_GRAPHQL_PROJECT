@@ -42,11 +42,12 @@ export class MainSeeder implements Seeder{
         regCondition : faker.string.alpha(),
         plafond : faker.number.int({min: 1000, max: 100000}),
         libelleCategorie : faker.string.alpha(3),
+
         representant: faker.helpers.arrayElement(represents),
       }))
     );
 
-    console.log(`✔ ${length} Clients created`);
+    console.log(`✔ ${clients.length} Clients created`);
 
     const familiesRepo = datasource.getRepository(Families);
 
@@ -71,18 +72,19 @@ export class MainSeeder implements Seeder{
         groupe : faker.string.alpha({length: {max: 4, min: 1}}),
         fournisseur : faker.person.firstName('male'),
         codeBarre : faker.string.numeric(13),
-        coefficient : faker.number.float(),
+        coefficient : faker.number.int(3),
         depot : faker.string.alpha(2),
         prixAchat : faker.number.int({min: 1, max: 5000}),
-        prixClient : faker.number.float(),
-        prixVente : faker.number.float(),
+        prixClient : faker.number.int(3),
+        prixVente : faker.number.int(3),
         conditionnement : faker.string.alpha(10),
         categorieTarif : faker.string.alpha(3),
-        remiseClient : faker.number.float(),
+        remiseClient : faker.number.int(3),
         sFamille : faker.string.alpha(6),
         suiviStock : faker.datatype.boolean(),
         sommeil : faker.datatype.boolean(),
         uniteVente : faker.string.alpha(1),
+
         famille: faker.helpers.arrayElement(families),
       }))
     );
