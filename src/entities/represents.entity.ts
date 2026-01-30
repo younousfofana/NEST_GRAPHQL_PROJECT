@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Clients } from "./clients.entity";
 
 @ObjectType()
 @Entity()
@@ -16,4 +17,8 @@ export class Represents{
     @Field()
     @Column()
     libelle : string
+
+    @OneToOne(()=>Clients, (client)=>client.representant)
+    @Field(()=>Clients)
+    client : Clients
 }

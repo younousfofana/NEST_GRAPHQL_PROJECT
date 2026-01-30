@@ -1,5 +1,5 @@
 import { Faker } from "@faker-js/faker";
-import { Families } from "src/entities/families.entity";
+import { Families } from "../../entities/families.entity";
 import { setSeederFactory } from "typeorm-extension";
 
 export const FamiliesFactory = setSeederFactory(Families, (faker:Faker)=>{

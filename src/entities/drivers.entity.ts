@@ -1,5 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
-import { SubFamilies } from "./sub_families.entity";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { Field, Int, ObjectType } from "@nestjs/graphql";
 
 @ObjectType()
@@ -21,9 +20,4 @@ export class Drivers{
     @Field(()=>Boolean)
     @Column()
     isSystem : boolean
-
-    @Field(()=>[SubFamilies])
-    @ManyToMany(()=>SubFamilies)
-    @JoinTable()
-    subFamilies : SubFamilies[]
 }

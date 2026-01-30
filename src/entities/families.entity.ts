@@ -1,6 +1,7 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Articles } from "./articles.entity";
 import { Field, Int, ObjectType } from "@nestjs/graphql";
+import { SubFamilies } from "./sub_families.entity";
 
 @ObjectType()
 @Entity()
@@ -24,4 +25,9 @@ export class Families{
         article => article.famille
     )
     articles : Articles[]
+
+    @Field(()=>[SubFamilies])
+    @ManyToMany(()=>SubFamilies)
+    @JoinTable()
+    subFamilies : SubFamilies[]
 }

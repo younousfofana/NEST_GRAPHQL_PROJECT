@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Families } from "./families.entity";
 import { Field, Int, ObjectType } from "@nestjs/graphql";
 
@@ -18,16 +18,16 @@ export class Articles{
     @Column()
     groupe : string
 
-    @Field(()=>Families)
-    @OneToOne(
-        ()=>Families, 
-        (famille)=> famille.articles,
+    @ManyToOne(
+        () => Families,
+        famille => famille.articles,
         {
             nullable: false,
             onDelete: 'RESTRICT'
         }
-     )
-    famille : Families
+    )
+    @Field(() => Families)
+    famille: Families;
 
     @Field()
     @Column()

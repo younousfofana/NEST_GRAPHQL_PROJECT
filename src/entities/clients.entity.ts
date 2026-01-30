@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Represents } from "./represents.entity";
 
 @ObjectType()
 @Entity()
@@ -22,9 +23,10 @@ export class Clients{
     @Column()
     categorie : string
 
-    @Field(()=>String)
-    @Column()
-    representant : string 
+    @Field(()=>Represents)
+    @OneToOne(()=>Represents, representant=> representant.client, { nullable: false})
+    @JoinColumn()
+    representant : Represents 
 
     @Field(()=>String)
     @Column()
